@@ -1,0 +1,4589 @@
+.react-calendar {
+    width: 350px;
+    max-width: 100%;
+    background: #fff;
+    border: 1px solid #a0a096;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.125em
+}
+
+.react-calendar--doubleView {
+    width: 700px
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer {
+    display: flex;
+    margin: -.5em
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer > * {
+    width: 50%;
+    margin: .5em
+}
+
+.react-calendar, .react-calendar *, .react-calendar :after, .react-calendar :before {
+    box-sizing: border-box
+}
+
+.react-calendar button {
+    margin: 0;
+    border: 0;
+    outline: none
+}
+
+.react-calendar button:enabled:hover {
+    cursor: pointer
+}
+
+.react-calendar__navigation {
+    height: 44px;
+    margin-bottom: 1em
+}
+
+.react-calendar__navigation button {
+    min-width: 44px;
+    background: none
+}
+
+.react-calendar__navigation button:enabled:focus, .react-calendar__navigation button:enabled:hover {
+    background-color: #e6e6e6
+}
+
+.react-calendar__navigation button[disabled] {
+    background-color: #f0f0f0
+}
+
+.react-calendar__month-view__weekdays {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: .75em
+}
+
+.react-calendar__month-view__weekdays__weekday {
+    padding: .5em
+}
+
+.react-calendar__month-view__weekNumbers {
+    font-weight: 700
+}
+
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .75em;
+    padding: 1em .66667em
+}
+
+.react-calendar__month-view__days__day--weekend {
+    color: #d10000
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+    color: #757575
+}
+
+.react-calendar__century-view .react-calendar__tile, .react-calendar__decade-view .react-calendar__tile, .react-calendar__year-view .react-calendar__tile {
+    padding: 2em .5em
+}
+
+.react-calendar__tile {
+    max-width: 100%;
+    text-align: center;
+    padding: .75em .5em;
+    background: none
+}
+
+.react-calendar__tile:disabled {
+    background-color: #f0f0f0
+}
+
+.react-calendar__tile:enabled:focus, .react-calendar__tile:enabled:hover {
+    background-color: #e6e6e6
+}
+
+.react-calendar__tile--now {
+    background: #ffff76
+}
+
+.react-calendar__tile--now:enabled:focus, .react-calendar__tile--now:enabled:hover {
+    background: #ffffa9
+}
+
+.react-calendar__tile--hasActive {
+    background: #76baff
+}
+
+.react-calendar__tile--hasActive:enabled:focus, .react-calendar__tile--hasActive:enabled:hover {
+    background: #a9d4ff
+}
+
+.react-calendar__tile--active {
+    background: #006edc;
+    color: #fff
+}
+
+.react-calendar__tile--active:enabled:focus, .react-calendar__tile--active:enabled:hover {
+    background: #1087ff
+}
+
+.react-calendar--selectRange .react-calendar__tile--hover {
+    background-color: #e6e6e6
+}
+
+.react-date-picker {
+    display: inline-flex;
+    position: relative
+}
+
+.react-date-picker, .react-date-picker *, .react-date-picker :after, .react-date-picker :before {
+    box-sizing: border-box
+}
+
+.react-date-picker--disabled {
+    background-color: #f0f0f0;
+    color: #6d6d6d
+}
+
+.react-date-picker__wrapper {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    border: thin solid grey
+}
+
+.react-date-picker__inputGroup {
+    min-width: calc(12px + 4.754em);
+    flex-grow: 1;
+    padding: 0 2px;
+    box-sizing: content-box
+}
+
+.react-date-picker__inputGroup__divider {
+    padding: 1px 0;
+    white-space: pre
+}
+
+.react-date-picker__inputGroup__input {
+    min-width: .54em;
+    height: 100%;
+    position: relative;
+    padding: 0 1px;
+    border: 0;
+    background: none;
+    font: inherit;
+    box-sizing: content-box;
+    -moz-appearance: textfield
+}
+
+.react-date-picker__inputGroup__input::-webkit-inner-spin-button, .react-date-picker__inputGroup__input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+}
+
+.react-date-picker__inputGroup__input:invalid {
+    background: rgba(255, 0, 0, .1)
+}
+
+.react-date-picker__inputGroup__input--hasLeadingZero {
+    margin-left: -.54em;
+    padding-left: calc(1px + .54em)
+}
+
+.react-date-picker__button {
+    border: 0;
+    background: transparent;
+    padding: 4px 6px
+}
+
+.react-date-picker__button:enabled {
+    cursor: pointer
+}
+
+.react-date-picker__button:enabled:focus .react-date-picker__button__icon, .react-date-picker__button:enabled:hover .react-date-picker__button__icon {
+    stroke: #0078d7
+}
+
+.react-date-picker__button:disabled .react-date-picker__button__icon {
+    stroke: #6d6d6d
+}
+
+.react-date-picker__button svg {
+    display: inherit
+}
+
+.react-date-picker__calendar {
+    width: 350px;
+    max-width: 100vw;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1
+}
+
+.react-date-picker__calendar--closed {
+    display: none
+}
+
+.react-date-picker__calendar .react-calendar {
+    border-width: thin
+}
+
+
+*, body, html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -ms-content-zooming: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    outline: none
+}
+
+a {
+    text-decoration: none;
+    color: inherit
+}
+
+ul {
+    list-style: none
+}
+
+.wr {
+    width: 1150px;
+    max-width: 92%;
+    margin-right: auto;
+    margin-left: auto
+}
+
+img {
+    max-width: 100%
+}
+
+
+.btn-my {
+    min-width: 150px;
+    padding: 0 15px;
+    height: 40px;
+    background: #3d5c9f;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: .005em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    font-weight: 600;
+
+}
+
+.btn-my:hover,
+.btn-blur:hover {
+    color: #fff;
+    background: #3d5c9fbd;
+    text-decoration: none !important;
+}
+
+.btn-my.bg-success:hover,
+.btn-blur.bg-success:hover {
+    background-color: rgba(40, 167, 69, 0.91) !important;
+}
+
+.btn-pink {
+    background: #ffe8e7;
+    color: #b81b1b
+}
+
+.btn-light {
+    background: #ccd8ea;
+    color: #3b4049
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px
+}
+
+.input span {
+    letter-spacing: .005em;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 4px
+}
+
+.input .warn {
+    background: #fef6f4;
+    border-radius: 12px;
+    padding: 10px 15px;
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #a06f6b
+}
+
+.input input, .input select {
+    background: #fff;
+    border: 1px solid #afafaf;
+    box-sizing: border-box;
+    border-radius: 10px;
+    height: 40px;
+    font-size: 14px;
+    padding: 0 15px
+}
+
+.input input[value=Оберіть], .input select[value=Оберіть] {
+    color: #bdbdbd
+}
+
+.input input::-webkit-input-placeholder, .input select::-webkit-input-placeholder {
+    color: #bdbdbd
+}
+
+.input input:-ms-input-placeholder, .input select:-ms-input-placeholder {
+    color: #bdbdbd
+}
+
+.input input::-ms-input-placeholder, .input select::-ms-input-placeholder {
+    color: #bdbdbd
+}
+
+.input input::placeholder, .input select::placeholder {
+    color: #bdbdbd
+}
+
+.cab {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: calc(100vh - 120px);
+    height: auto
+}
+
+.cab_menu {
+    width: 260px;
+    background-size: 100%;
+    background-repeat: repeat;
+    background-position: 0 -120px;
+    height: 100%;
+    border-right: 1px solid #ccd8ea
+}
+
+.cab_menu ul {
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: 80px
+}
+
+.cab_menu li, .cab_menu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.cab_menu li {
+    width: 180px;
+    height: 140px;
+    background: #f3f6fb;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    justify-content: center;
+    box-shadow: inset 0 4px 13px rgba(0, 0, 0, .19), 0 4px 30px rgba(0, 0, 0, .18)
+}
+
+.cab_menu li .title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: -.005em;
+    color: #3d5c9f
+}
+
+.cab_menu li a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%
+}
+
+.cab_menu li:last-child {
+    margin-bottom: 0
+}
+
+.cab_menu li img {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    width: 66px;
+    height: auto
+}
+
+.cab_containers {
+    width: calc(100% - 260px);
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    /*padding-left: 5%;*/
+    /*padding-right: 5%*/
+}
+
+.cab .container {
+    position: relative;
+    /*width: 1190px;*/
+    /*max-width: 100%;*/
+    padding: 25px 30px 35px;
+    box-shadow: 0 5px 13px rgba(0, 0, 0, .4);
+    border-radius: 32px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.cab .container_filter .search {
+    position: absolute;
+    top: 20px;
+    height: 40px;
+    right: 200px;
+    width: 310px
+}
+
+.cab .container_filter .search input {
+    height: 100%;
+    padding: 0 15px;
+    width: 100%
+}
+
+.cab .container_filter .search input, .cab .container_filter select {
+    border: none;
+    background: #f2f2f6;
+    border-radius: 10px;
+    color: #323233;
+    font-weight: 500
+}
+
+.cab .container_filter select {
+    position: absolute;
+    top: 20px;
+    height: 40px;
+    right: 30px;
+    padding: 0 10px
+}
+
+.cab .container_title {
+    color: #3d5c9f;
+    font-size: 18px;
+    margin-bottom: 25px;
+    font-weight: 700
+}
+
+.cab .container-activation {
+    padding: 60px 50px;
+    min-height: 300px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex
+}
+
+.cab .container-activation .title {
+    font-size: 23px;
+    font-weight: 700;
+    margin-bottom: 10px
+}
+
+.cab .container-activation .input {
+    margin-bottom: 0;
+    margin-top: 25px;
+    width: 340px;
+    max-width: 100%
+}
+
+.cab .container-activation .input .warn {
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 10px
+}
+
+.cab .container-activation .input input {
+    border-radius: 10px 10px 0 0;
+    height: 45px;
+    text-align: center;
+    font-size: 16px
+}
+
+.cab .container-activation .btn-my {
+    height: 45px;
+    border-radius: 0 0 10px 10px;
+    width: 340px;
+    margin-bottom: 15px;
+    max-width: 100%
+}
+
+.cab .container-activation p {
+    font-size: 16px
+}
+
+.cab .container .table {
+    /*border: 1px solid #d9d9d9;*/
+    /*display: flex;*/
+    /*flex-direction: column*/
+}
+
+.cab .container .table .line {
+    height: 41px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    border-top: 1px solid #d9d9d9;
+    font-weight: 500
+}
+
+/*.cab .container .table .line:first-child {*/
+/*border-top: none*/
+/*}*/
+
+/*.cab .container .table .line-empty {*/
+/*display: flex;*/
+/*justify-content: center;*/
+/*align-items: center;*/
+/*text-align: center;*/
+/*font-weight: 500;*/
+/*font-size: 16px;*/
+/*height: 100px*/
+/*}*/
+
+/*.cab .container .table .line-head {*/
+/*font-weight: 600*/
+/*}*/
+
+.cab .container .table .line-head .row-4 {
+    text-transform: uppercase
+}
+
+/*.cab .container .table .row {*/
+/*width: 100%;*/
+/*display: flex;*/
+/*align-items: center;*/
+/*justify-content: flex-start;*/
+/*padding: 0 26px;*/
+/*height: 41px;*/
+/*letter-spacing: -.005em;*/
+/*font-size: 14px*/
+/*}*/
+
+/*.cab .container .table .row .action {*/
+/*height: 28px;*/
+/*width: 28px;*/
+/*background-size: 100%;*/
+/*background-position: 50% !important;*/
+/*background-repeat: no-repeat !important;*/
+/*margin: 0 3px*/
+/*}*/
+
+/*.cab .container .table .row .action-print {*/
+/*background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='28' height='26' fill='none' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Crect x='.001' width='27.737' height='25.714' rx='12.857' fill='%233D5C9F'/%3E%3Cpath fill='url(%23pattern0)' d='M4.623 5.143H22.19v15.429H4.623z'/%3E%3Cdefs%3E%3Cpattern id='pattern0' patternContentUnits='objectBoundingBox' width='1' height='1'%3E%3Cuse xlink:href='%23image0' transform='matrix(.025 0 0 .02846 0 -.027)'/%3E%3C/pattern%3E%3Cimage id='image0' width='40' height='37' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAlCAYAAAAwYKuzAAACu0lEQVRYhe3YT4hWVRjH8c99HVNTk6Jmo2K7CBfmSqVlBLWJbFf7IBBcjLSqZZsgoRauQrctQ1y40PYJQdEmQhTTRErT0VFmJt/xaXHObS5x33vP6/tOY9AXXl7uOed5zu/e85w/z6kiQgcH8Qmex3JXw8dgE27hI1wY1Wimx8lRvDZFUW38jvdGVfYJXMn/Q+ktFwts+hhiCw5kXytdjfs6G+b/BziMmxOKq3kBF7Gj0Ucrg0KHgaUJRTVZyj57KRVYScMyLbZkn72UClw3+gTWARzSBJkWi1aHeKxJ8lQ2XMGjRn2F7VhosRmXYfZVD3Htb4ANufzPunGVF+oP8a40qyKLe4hdeCY//yIt1tMQuAl7sqh7+BUb83OFeXyFz6qImMPxCTtdK+aqiLiK3eutZARXq4i4j63rrWQEDwYaAfkE8nDSgB+HGziCK42ybfgUh0bYxL8p8Ay+bik/YbTAiZeMcXgT7+CatJw8ktbDD7qMqoi4jWfXXN7jcec/vxevO/8LnJQnXmDpMrMopZ8LU+p3Oz5WcEqvImJeOmZ1cQfPTUFYk5Ll7d6MstxggFkph4W38Ya0j/clP5V0ED6L07lsVml4RcQ30c98RMxGhIjYVdB+FDuzj9nss4/zAxxrfJkS5nE+f71lKYXs+i3ntudwd4x+fsPcDH7AXrwlBW+dkyzhfekGoMl9vC4NUSgb4krae9u4gC+x2WpOsiCFwx/1LL6FUy3G+1sEwst4qSGgi/oFfsZPLfXf4eQo475l5umWsp34scD2nwzxIq4X9PE3fTOp7ess4nKxrFUuac+tO0eg9Cs0E/fb2IdXpJgpicEVfG/1jrGZuHdSKrCSgrjeSZbwbaFtG5sV3s30Cazrt0rH9WneD9aZZKe/vs42NNq9Opmu3j5a6RP4hbQtrdUd9U183tXoLw9BN+G7iXx1AAAAAElFTkSuQmCC'/%3E%3C/defs%3E%3C/svg%3E")*/
+/*}*/
+
+/*.cab .container .table .row .action-remove {*/
+/*background: #f2f2f6;*/
+/*display: flex;*/
+/*cursor: pointer;*/
+/*justify-content: center;*/
+/*align-items: center;*/
+/*font-size: 28px;*/
+/*border-radius: 100%;*/
+/*font-weight: 300*/
+/*}*/
+
+/*.cab .container .table .row .action-edit {*/
+/*background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='29' height='26' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='.982' width='27.737' height='25.714' rx='12.857' fill='%23CCD8EA'/%3E%3Cg clip-path='url(%23clip0)'%3E%3Cpath d='M19.732 8.316l2.751 2.51a.256.256 0 010 .385l-6.66 6.078-2.83.287c-.379.039-.699-.253-.656-.599l.314-2.582 6.66-6.079a.319.319 0 01.421 0zm4.941-.637L23.185 6.32a1.275 1.275 0 00-1.684 0l-1.08.986a.256.256 0 000 .384l2.752 2.51a.319.319 0 00.42 0l1.08-.985a1.022 1.022 0 000-1.536zm-5.508 7.957v2.833H9.406V9.563h7.008c.098 0 .19-.036.26-.098l1.22-1.113c.231-.211.067-.57-.26-.57H8.918c-.808 0-1.464.598-1.464 1.336v9.796c0 .738.656 1.336 1.464 1.336h10.735c.808 0 1.464-.598 1.464-1.335v-4.392c0-.298-.393-.446-.625-.237l-1.22 1.113a.327.327 0 00-.107.237z' fill='%233D5C9F'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0'%3E%3Cpath fill='%23fff' transform='translate(7.454 6)' d='M0 0h17.567v14.25H0z'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E")*/
+/*}*/
+
+/*.cab .container .table .row-1 {*/
+/*width: 71.5px;*/
+/*width: 6.34%;*/
+/*border-right: 1px solid #d9d9d9*/
+/*}*/
+
+/*.cab .container .table .row-2 {*/
+/*width: 592px;*/
+/*width: 52.49%;*/
+/*border-right: 1px solid #d9d9d9*/
+/*}*/
+
+/*.cab .container .table .row-3 {*/
+/*width: 198px;*/
+/*width: 17.56%;*/
+/*border-right: 1px solid #d9d9d9*/
+/*}*/
+
+/*.cab .container .table .row-4 {*/
+/*width: 164px;*/
+/*width: 14.54%;*/
+/*border-right: 1px solid #d9d9d9*/
+/*}*/
+
+/*.cab .container .table .row-5 {*/
+/*width: 126px;*/
+/*width: 11.17%;*/
+/*padding: 0;*/
+/*justify-content: center*/
+/*}*/
+
+@media (max-width: 850px) {
+    body .header {
+        height: 60px
+    }
+
+    body .header_logo {
+        display: flex;
+        justify-content: center;
+        align-items: center
+    }
+
+    body .header_logo img {
+        height: 30px;
+        width: auto
+    }
+
+    body .header_nav {
+        width: 90px
+    }
+
+    body .header_nav svg {
+        margin-right: 0
+    }
+
+    body .header_menu {
+        display: none
+    }
+
+    body .header_user .col {
+        padding-right: 10px
+    }
+
+    body .header_actions {
+        padding-right: 3%
+    }
+
+    body .header_actions .logo {
+        height: 40px;
+        width: 40px;
+        min-width: 40px
+    }
+
+    body .header_actions .btn-my {
+        font-size: 14px
+    }
+
+    body .cab {
+        padding-top: 0;
+        display: flex;
+        flex-direction: column
+    }
+
+    body .cab .container .table {
+        border: none
+    }
+
+    body .cab .container .table .line {
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        height: auto
+    }
+
+    body .cab .container .table .line-head {
+        display: none !important
+    }
+
+    body .cab .container .table .line .row {
+        border-bottom: 1px solid #d9d9d9;
+        padding: 0
+    }
+
+    body .cab .container .table .line .row-1 {
+        order: 1;
+        width: 30%;
+        border-left: 1px solid #d9d9d9;
+        text-align: center;
+        justify-content: center
+    }
+
+    body .cab .container .table .line .row-5 {
+        order: 2;
+        width: 70%;
+        justify-content: flex-end;
+        border-right: 1px solid #d9d9d9;
+        padding-right: 5px
+    }
+
+    body .cab .container .table .line .row-2 {
+        order: 3;
+        width: 100%;
+        border-left: 1px solid #d9d9d9;
+        padding: 15px
+    }
+
+    body .cab .container .table .line .row-3 {
+        order: 4;
+        width: 100%;
+        border-left: 1px solid #d9d9d9;
+        padding: 15px
+    }
+
+    body .cab .container .table .line .row-4 {
+        order: 5;
+        width: 100%;
+        border-left: 1px solid #d9d9d9;
+        padding: 15px
+    }
+
+    body .cab_menu {
+        border-right: unset;
+        width: 100%;
+        border-bottom: 1px solid #ccd8ea
+    }
+
+    body .cab_container {
+        display: flex;
+        flex-direction: column
+    }
+
+    body .cab .container_title {
+        margin-bottom: 10px;
+        text-align: center
+    }
+
+    body .cab_containers {
+        width: 100%;
+        padding-top: 30px;
+        padding-bottom: 70px
+    }
+
+    body .cab .container-settings .main {
+        display: flex;
+        flex-direction: column
+    }
+
+    body .cab .container-settings .main .form {
+        width: 100%
+    }
+
+    body .cab .container-settings .main .form .input {
+        width: 100%;
+        padding-right: 0
+    }
+
+    body .cab .container-settings .main .image {
+        width: 100%
+    }
+
+    body .cab .container-settings .main .buttons {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px
+    }
+
+    body .cab .container-settings .main .buttons .btn-my {
+        margin-top: 10px;
+        width: 100%;
+        height: 45px;
+        margin-left: 0
+    }
+
+    body .cab .container_filter {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center
+    }
+
+    body .cab .container_filter select {
+        position: relative;
+        top: 0;
+        right: 0
+    }
+
+    body .cab .cab_menu {
+        min-height: unset;
+        height: auto;
+        background-size: cover !important;
+        padding-bottom: 10px
+    }
+
+    body .cab .cab_menu ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    body .cab .cab_menu li {
+        width: 100%;
+        height: 50px;
+        margin-bottom: 15px;
+        box-shadow: unset;
+        background: #fff
+    }
+
+    body .cab .cab_menu li img {
+        width: 30px;
+        display: none
+    }
+
+    body .cab .cab_menu li a {
+        background: unset;
+        width: 100%;
+        text-align: center
+    }
+
+    body .cab .cab_menu li a .title {
+        font-size: 13px
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .4);
+    z-index: 200;
+    display: none
+}
+
+.modal .items {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.modal .items .item {
+    width: 48%;
+    margin: 1%;
+    font-size: 15px;
+    border: 2px solid #ececec;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer
+}
+
+.modal .items .item.active {
+    border-color: #3d5c9f
+}
+
+.modal .items-small .item {
+    width: 12.2%
+}
+
+.modal .items-middle .item {
+    height: 50px
+}
+
+.modal.active {
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.modal_container {
+    width: 100%;
+    max-width: 600px;
+    padding: 40px 30px;
+    position: relative;
+    background: #fff;
+    text-align: center
+}
+
+.modal .close {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 32px;
+    cursor: pointer;
+    font-weight: 300;
+    color: #585858
+}
+
+.modal .btn-my {
+    width: 150px;
+    margin-top: 20px;
+    font-size: 14px;
+    max-width: unset;
+    margin-right: auto;
+    margin-left: auto
+}
+
+.modal h3 {
+    font-weight: 600;
+    font-size: 17px;
+    margin-bottom: 10px
+}
+
+.container-settings .image-small {
+    height: 100px !important;
+    width: 300px !important;
+    /*border: 1px solid #afafaf;*/
+    /*margin-top: 30px*/
+}
+
+.container-settings .image-small > span {
+    letter-spacing: .005em;
+    font-weight: 700;
+    margin-top: -27px;
+    display: block;
+    font-size: 16px
+}
+
+.form-fields {
+    width: 100% !important
+}
+
+.sfield {
+    margin-bottom: 10px
+}
+
+.sfield, .sfield .items {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    position: relative
+}
+
+.sfield .items {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px
+}
+
+.sfield .add {
+    position: absolute;
+    top: -30px;
+    right: 5px;
+    height: 25px;
+    width: 25px;
+    border-radius: 6px;
+    background: #3d5c9f;
+    color: #fff;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 26px;
+    cursor: pointer
+}
+
+.sfield .item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-bottom: 12px
+}
+
+.sfield .item:last-child {
+    margin-bottom: 0
+}
+
+.sfield_title {
+    width: 100%;
+    font-weight: 700;
+    /*font-size: 16px;*/
+    margin-bottom: 8px
+}
+
+.sfield input, .sfield textarea {
+    width: 100%;
+    /*font-size: 15px;*/
+    padding: 5px;
+    border: 1px solid #ccc
+}
+
+.sfield input {
+    border-bottom: unset;
+    border-radius: 8px 8px 0 0
+}
+
+.sfield textarea {
+    border-radius: 0 0 8px 8px
+}
+
+.openTheme-field_5 {
+    top: 359px !important
+}
+
+.openTheme-field_5, .openTheme-field_7 {
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    background: #3d5c9f;
+    color: #fff;
+    /*font-size: 15px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    position: absolute;
+    left: 26px
+}
+
+.openTheme-field_7 {
+    top: 413px !important
+}
+
+.openTheme-field_8 {
+    top: 467px !important
+}
+
+.openTheme-field_8, .openTheme-field_9, .openTheme-field_11, .openTheme-field_12 {
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    background: #3d5c9f;
+    color: #fff;
+    /*font-size: 15px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    position: absolute;
+    left: 26px
+}
+
+.openTheme-field_9 {
+    top: 613px
+}
+
+
+.maket-3 .openTheme-field_11 {
+    top: 140px;
+}
+
+.maket-3 .openTheme-field_12 {
+    top: 320px;
+}
+
+
+.maket .sign {
+    height: 32.666px;
+    width: 99.333px;
+    position: absolute;
+    bottom: 76px;
+    background-size: cover !important;
+    background-position: 50% !important;
+    left: 550px;
+    border-radius: 0;
+    border: none !important
+}
+
+.maket-5 .sign {
+    bottom: 105px
+}
+
+.cab_containers {
+    position: relative
+}
+
+.workbench > .btn-my {
+    position: absolute;
+    top: 12px;
+    left: 5.5%;
+    width: auto;
+    min-width: 0;
+    padding: 0 20px;
+    z-index: 40
+}
+
+.workbench .btn-new {
+    border-radius: 20px 20px 0 0 !important;
+    height: 45px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%
+}
+
+.maket {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    position: relative;
+    background-size: contain !important;
+    background-position: 0 0 !important;
+    background-repeat: no-repeat !important;
+    width: 1050px;
+    min-width: 1050px;
+    height: 800px;
+    height: 740px;
+    z-index: 10;
+    display: none
+}
+
+.maket.active {
+    z-index: 20;
+    background-color: #fff;
+    display: block
+}
+
+.maket_1 .field_3, .maket_1 .field_4 {
+    display: none
+}
+
+.maket .field {
+    position: absolute;
+    /*font-size: 12px*/
+}
+
+.maket .field > div, .maket .field > input {
+    border: none;
+    /*font-size: 12px;*/
+    background: rgba(136, 170, 244, .1)
+}
+
+.maket .field > input {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    letter-spacing: 18px
+}
+
+.maket .field_0 {
+    top: 98px;
+    left: 85px;
+    width: 396px;
+    height: 33px;
+    text-align: left;
+    font-weight: 700
+}
+
+.maket .field_0, .maket .field_1 {
+    /*font-size: 12px;*/
+    line-height: 1.35em
+}
+
+.maket .field_1 {
+    top: 115px;
+    left: 85px;
+    width: 396px;
+    height: 33px
+}
+
+.maket .field.tr, .maket .field.tr * {
+    letter-spacing: normal
+}
+
+.maket .field.tr * {
+    /*font-size: 12px !important*/
+}
+
+/*.maket .field.tr_1 {*/
+/*position: absolute;*/
+/*height: 17px;*/
+/*top: 524px;*/
+/*left: 300px;*/
+/*width: 72px;*/
+/*text-align: center;*/
+/*}*/
+
+/*.maket .field.tr_1 * {*/
+/*!*font-size: 10px*!*/
+/*}*/
+
+/*.maket .field.tr_1 .tr_action_left, .maket .field.tr_1 .tr_action_right,*/
+/*.maket .field.tr_2 .tr_action_left, .maket .field.tr_2 .tr_action_right,*/
+/*.maket .field.tr_3 .tr_action_left, .maket .field.tr_3 .tr_action_right,*/
+/*.maket .field.tr_4 .tr_action_left, .maket .field.tr_4 .tr_action_right,*/
+/*.maket .field.tr_5 .tr_action_left, .maket .field.tr_5 .tr_action_right,*/
+/*.maket .field.tr_6 .tr_action_left, .maket .field.tr_6 .tr_action_right,*/
+/*.maket .field.tr_7 .tr_action_left, .maket .field.tr_7 .tr_action_right,*/
+/*.maket .field.tr_8 .tr_action_left, .maket .field.tr_8 .tr_action_right,*/
+/*.maket .field.tr_9 .tr_action_left, .maket .field.tr_9 .tr_action_right,*/
+/*.maket .field.tr_10 .tr_action_left, .maket .field.tr_10 .tr_action_right {*/
+/*background: transparent;*/
+/*}*/
+
+/*.maket .field.tr_1 *,*/
+/*.maket .field.tr_2 *,*/
+/*.maket .field.tr_3 *,*/
+/*.maket .field.tr_4 *,*/
+/*.maket .field.tr_5 *,*/
+/*.maket .field.tr_6 *,*/
+/*.maket .field.tr_7 *,*/
+/*.maket .field.tr_8 *,*/
+/*.maket .field.tr_9 *,*/
+/*.maket .field.tr_10 * {*/
+/*padding: 0 10px;*/
+/*}*/
+
+.maket .field.tr_5 {
+    position: absolute;
+    height: 17px;
+    top: 524px;
+    left: 628px;
+    width: 76px;
+    text-align: center
+}
+
+.maket .field.tr_5 * {
+    /*font-size: 10px*/
+}
+
+.maket .field.tr_9 {
+    position: absolute;
+    height: 17px;
+    top: 524px;
+    left: 930px;
+    width: 67px;
+    text-align: center
+}
+
+.maket .field.tr_9 * {
+    /*font-size: 10px*/
+}
+
+.maket .field.tr_2 {
+    position: absolute;
+    height: 17px;
+    top: 541px;
+    left: 300px;
+    width: 72px;
+    text-align: center
+}
+
+.maket .field.tr_2 * {
+    /*font-size: 10px*/
+}
+
+.maket .field.tr_6 {
+    position: absolute;
+    height: 17px;
+    top: 541px;
+    left: 629px;
+    width: 75px;
+    text-align: center
+}
+
+.maket .field.tr_6 * {
+    /*font-size: 10px*/
+}
+
+.maket .field.tr_10 {
+    position: absolute;
+    height: 17px;
+    top: 541px;
+    left: 930px;
+    width: 67px;
+    text-align: center
+}
+
+.maket .field.tr_10 * {
+    /*font-size: 10px*/
+}
+
+.maket .field.tr_3 {
+    position: absolute;
+    height: 17px;
+    top: 560px;
+    left: 300px;
+    width: 72px;
+    text-align: center
+}
+
+.maket .field.tr_3 * {
+    /*font-size: 10px*/
+}
+
+.maket .field.tr_7 {
+    position: absolute;
+    height: 17px;
+    top: 560px;
+    left: 629px;
+    width: 76px;
+    text-align: center
+}
+
+.maket .field.tr_7 * {
+    /*font-size: 10px*/
+}
+
+/*.maket .field.tr_11 {*/
+/*position: absolute;*/
+/*height: 17px;*/
+/*top: 560px;*/
+/*left: 930px;*/
+/*width: 67px;*/
+/*text-align: center*/
+/*}*/
+
+/*.maket .field.tr_11 .vdpWithInput,*/
+/*.maket .field.tr_12 .vdpWithInput {*/
+/*padding-left: 10px;*/
+/*width: 100%;*/
+/*}*/
+
+/*.maket .field.tr_11 input {*/
+/*!*font-size: 10px;*!*/
+/*border: none;*/
+/*width: 65px;*/
+/*background: transparent;*/
+/*}*/
+
+.maket .field.tr_12 input {
+    /*font-size: 10px;*/
+    border: none;
+    width: 65px !important;
+    background: transparent;
+}
+
+.maket .field.tr_4 {
+    position: absolute;
+    height: 17px;
+    top: 577px;
+    left: 300px;
+    width: 72px;
+    text-align: center
+}
+
+.maket .field.tr_4 * {
+    /*font-size: 10px*/
+}
+
+.maket .field.tr_8 {
+    position: absolute;
+    height: 17px;
+    top: 577px;
+    left: 629px;
+    width: 76px;
+    text-align: center
+}
+
+.maket .field.tr_8 * {
+    /*font-size: 10px*/
+}
+
+.maket .field.tr_12 {
+    position: absolute;
+    height: 17px;
+    top: 577px;
+    left: 931px;
+    width: 62px;
+    text-align: center
+}
+
+.maket .field.tr_12 input {
+    /*font-size: 10px;*/
+    border: none;
+    width: 80px
+}
+
+/*.maket .field.number {*/
+/*top: 224px;*/
+/*right: 29%;*/
+/*width: 62px;*/
+/*height: 20px*/
+/*}*/
+
+.maket .field.number input {
+    text-align: center;
+    letter-spacing: normal
+}
+
+.maket .field.name {
+    top: 313px;
+    left: 267px;
+    width: 743px;
+    top: 284px;
+    left: 273px;
+    width: 740px;
+    height: 19px
+}
+
+.maket .field.name * {
+    /*font-size: 100%;*/
+    height: 100%
+}
+
+.maket .field.year {
+    top: 340px;
+    left: 573px;
+    width: 81px;
+    text-align: center
+}
+
+.maket .field.month {
+    top: 341px;
+    left: 518px;
+    width: 133px;
+    text-align: center
+}
+
+.maket .field.sex {
+    top: 311px;
+    left: 317px;
+    height: 19px;
+    width: 18px;
+    text-align: center;
+}
+
+.maket .field.sex * {
+    height: 100%
+}
+
+.maket .field.docYear {
+    width: 77px;
+    height: 20px;
+    top: 246px;
+    left: 484px
+}
+
+.maket .field.docYear input {
+    height: 100%;
+    text-align: center;
+    letter-spacing: normal;
+    border: none;
+    width: 80px;
+}
+
+.maket .field.day {
+    top: 308px;
+    left: 636px;
+    width: 133px;
+    height: 23px;
+    text-align: center;
+    /*    letter-spacing: 14px*/
+}
+
+.maket .field.day .vdpComponent {
+    height: 100%;
+}
+
+.maket .field.day input {
+    height: 100%;
+    text-align: center;
+    /*letter-spacing: 16.2px;*/
+    border: none;
+    width: 130px;
+    letter-spacing: 6px
+}
+
+.maket .field.address {
+    top: 345px;
+    left: 274px;
+    width: 538px;
+    height: 17px
+}
+
+.maket .field.address * {
+    height: 100%
+}
+
+.maket .field.phone {
+    top: 345px;
+    left: 879px;
+    width: 133px;
+    height: 17px
+}
+
+.maket .field.phone * {
+    height: 100%
+}
+
+.maket .field_2 {
+    top: 174px;
+    left: 191px;
+    width: 198px;
+    height: 19px;
+    text-align: center;
+    letter-spacing: 25px;
+}
+
+.maket .field_2 input {
+    padding-left: 10px;
+    height: 100%;
+}
+
+.maket .field_2 div {
+    position: relative
+}
+
+.maket .field_2 * {
+    letter-spacing: 19px
+}
+
+.maket .field_3 {
+    top: 245px;
+    left: 692px;
+    width: 133px;
+    text-align: center;
+    letter-spacing: 16px
+}
+
+.maket .field_3 div {
+    position: relative
+}
+
+.maket .field_4 {
+    top: 245px;
+    left: 867px;
+    width: 107px;
+    text-align: center;
+    letter-spacing: 16px
+}
+
+.maket .field_4 div {
+    position: relative
+}
+
+.maket .field_5 {
+    top: 363px;
+    left: 140px;
+    width: 874px;
+    line-height: 1.45em
+}
+
+.maket .field_6 {
+    top: 499px;
+    left: 60px;
+    width: 950px
+}
+
+.maket .field_7 {
+    top: 418px;
+    left: 140px;
+    width: 874px;
+    line-height: 1.45em
+}
+
+.maket .field_8 {
+    top: 468px;
+    left: 335px;
+    width: 675px;
+    line-height: 1.45em
+}
+
+.maket .field_9 {
+    top: 622px;
+    left: 81px;
+    width: 929px;
+    line-height: 1.45em
+}
+
+.maket-1 .field.id {
+    height: 30px;
+    top: 227px;
+    right: 303px;
+    width: 63px
+}
+
+.maket-1 .field.id * {
+    text-align: center
+}
+
+.maket-1 .field.field_3, .maket-1 .field.field_4 {
+    display: none !important
+}
+
+.maket-3 .field-deputy_department {
+    height: 23px;
+    width: 29.3%;
+    right: 6.5%;
+    top: 85.5%
+}
+
+.maket-3 .field-deputy_department * {
+    height: 100%;
+    letter-spacing: normal !important;
+    text-align: left !important;
+    color: #000 !important
+}
+
+.maket-3 .field-doctor {
+    height: 23px;
+    width: 26.3%;
+    left: 12%;
+    top: 85.5%
+}
+
+.maket-3 .field-doctor * {
+    height: 100%;
+    letter-spacing: normal !important;
+    text-align: left !important;
+    color: #000 !important
+}
+
+.maket-3 .lines {
+    position: absolute;
+    top: 16.9%;
+    width: 86.5%;
+    left: 6.8%;
+    display: flex;
+    flex-direction: column
+}
+
+.maket-3 .line {
+    width: 100%;
+    height: 24px;
+    display: flex
+}
+
+.maket-3 .line-15 {
+    margin-bottom: 24px
+}
+
+.maket-3 .line .field {
+    position: relative
+}
+
+.maket-3 .line .field * {
+    height: 100%;
+    display: flex;
+    align-items: center
+}
+
+.maket-3 .line .field-date {
+    width: 14%
+}
+
+.maket-3 .line .field-value {
+    width: 86%
+}
+
+
+/*.maket-2 .field-p2-main {*/
+/*position: absolute;*/
+/*width: 89%;*/
+/*right: 4.8%;*/
+/*height: 22px;*/
+/*top: 17.5%;*/
+/*width: 915px;*/
+/*right: 50px*/
+/*}*/
+
+/*.maket-2 .field-p2-main * {*/
+/*height: 100%;*/
+/*display: flex;*/
+/*align-items: center;*/
+/*display: block;*/
+/*!*font-size: 14px*!*/
+/*}*/
+
+
+/*.maket-4 input {*/
+/*letter-spacing: normal !important;*/
+/*text-align: center !important*/
+/*}*/
+
+.maket-3 .openTheme-field_2 {
+    top: 143px
+}
+
+.maket-3 .openTheme-field_2, .maket-3 .openTheme-field_3 {
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    background: #3d5c9f;
+    color: #fff;
+    /*font-size: 15px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    position: absolute;
+    left: 26px
+}
+
+.maket-3 .openTheme-field_3 {
+    top: 337px
+}
+
+.maket-3 .openTheme-field_5 {
+    top: 487px
+}
+
+.maket-3 .openTheme-field_5, .maket-3 .openTheme-field_6 {
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    background: #3d5c9f;
+    color: #fff;
+    /*font-size: 15px;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    position: absolute;
+    left: 26px
+}
+
+.maket-3 .openTheme-field_6 {
+    top: 525px
+}
+
+.maket-3 input {
+    letter-spacing: normal !important;
+    text-align: left !important
+}
+
+.maket-3 .field_1 {
+    display: block;
+    top: 105px;
+    left: 171px;
+    width: 828px
+}
+
+.maket-3 .field_2 {
+    letter-spacing: normal !important;
+    text-align: left;
+    top: 164px;
+    left: 94px;
+    width: 905px
+}
+
+.maket-3 .field_2 * {
+    /*font-size: 14.5px;*/
+    line-height: 1.4em
+}
+
+.maket-3 .field_3 {
+    top: 348px;
+    letter-spacing: normal !important;
+    text-align: left;
+    left: 94px;
+    width: 905px
+}
+
+.maket-3 .field_3 * {
+    /*font-size: 14.5px;*/
+    line-height: 1.4em
+}
+
+.maket-3 .field_4 {
+    top: 448px;
+    left: 270px;
+    width: 100px;
+    letter-spacing: normal;
+    text-align: left
+}
+
+.maket-3 .field_5_date {
+    top: 487px;
+    left: 417px;
+    width: 173px
+}
+
+.maket-3 .field_5_date * {
+    text-align: center
+}
+
+.maket-3 .field_6_date {
+    top: 527px;
+    left: 417px;
+    width: 173px
+}
+
+.maket-3 .field_6_date * {
+    text-align: center
+}
+
+.maket-5 .line-14, .maket-5 .line-15, .maket-5 .line-16, .maket-5 .line-17, .maket-5 .line-18, .maket-5 .line-19, .maket-5 .line-20, .maket-5 .line-21, .maket-5 .line-22 {
+    height: 17.9px
+}
+
+.maket-5 .line-22 {
+    position: absolute;
+    top: 428px;
+    width: 250px;
+    left: 212px;
+    height: 15px
+}
+
+.maket-5 .line-22 .field-date {
+    display: none
+}
+
+.maket-5 .line-22 .field-value {
+    width: 100%
+}
+
+.maket-5 .line-14 {
+    margin-bottom: 0
+}
+
+
+/*.maket-2 .field-p2-main {*/
+/*height: auto*/
+/*}*/
+
+
+.maket-3 .field_1 {
+    height: auto
+}
+
+.maket .field.month, .maket .field.year {
+    display: none
+}
+
+.maket-4.maket-5 .lines {
+    top: 24.5%
+}
+
+.maket-3 .field_2 div, .maket-3 .field_3 div {
+    letter-spacing: normal;
+    line-height: 1.45em
+}
+
+.maket-1 .field.tr.leftAlign {
+    text-align: left
+}
+
+.maket-1 .field.tr.rightAlign {
+    text-align: right
+}
+
+/*.maket-2 .field-p2-main * {*/
+/*line-height: 1.4em*/
+/*}*/
+
+/*.maket-2 .field-p2-main > div {*/
+/*!*font-size: 14px*!*/
+/*}*/
+
+.maket-1 .field_0 {
+    top: 96px;
+    height: 20px;
+    text-align: center
+}
+
+.maket-1 .field_0 *, .maket-1 .field_0 > div {
+    height: 100% !important;
+    /*font-size: 15px*/
+}
+
+.maket-1 .field_1 {
+    text-align: center !important
+}
+
+.modal .items-full .item {
+    height: auto;
+    padding: 7px 10px
+}
+
+/*.maket-4 .line .field-value, .maket-4 .line .field-value * {*/
+/*text-align: left*/
+/*}*/
+
+
+.maket-3 .field_2 div, .maket-3 .field_3 div {
+    line-height: 1.45em !important
+}
+
+.maket-3 .field_2 div, .maket-3 .field_2 div *, .maket-3 .field_3 *, .maket-3 .field_3 div {
+    /*font-size: 14px;*/
+    line-height: 1.45em !important
+}
+
+/*.maket-4:not(.maket-5) .line-23 .field-value *, .maket-5 .line-22 .field-value * {*/
+/*text-align: center*/
+/*}*/
+
+.tr_action_right {
+    right: 0
+}
+
+.tr_action_left, .tr_action_right {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+    cursor: pointer
+}
+
+.tr_action_left {
+    left: 0
+}
+
+.maket-3 .field_7 {
+    top: 548px;
+    left: 94px;
+    width: 905px;
+    line-height: 1.55em
+}
+
+
+.maket-3 .field_7 {
+    line-height: 1.45em
+}
+
+
+.signInfo {
+    /*width: calc(100% - 300px);*/
+    padding-top: 30px;
+    /*height: 130px;*/
+    display: flex;
+    align-items: center;
+    /*font-size: 14px;*/
+    color: #555;
+    padding-left: 3%
+}
+
+.form-fields .sfield, .form-fields .sfield .item {
+    position: relative
+}
+
+.form-fields .sfield input {
+    padding-right: 35px
+}
+
+.form-fields .sfield .remove {
+    height: 23px;
+    width: 23px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: #ffe8e7;
+    cursor: pointer;
+    color: #b81a1c;
+    font-weight: 400;
+    /*font-size: 23px*/
+}
+
+
+@media (max-width: 800px) {
+    .signInfo {
+        height: auto;
+        padding-top: 0;
+        padding-bottom: 50px;
+        margin-top: -10px;
+        width: 100%;
+        padding-right: 3%
+    }
+}
+
+/*.cab_containers {*/
+/*max-height: 100%*/
+/*}*/
+
+/*.cab_containers .container {*/
+/*margin-bottom: 30px*/
+/*}*/
+
+.workbench {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 5%
+}
+
+.list {
+    position: relative;
+    right: 0;
+    margin-left: 30px;
+    cursor: pointer
+}
+
+.list .item {
+    width: 140px;
+    height: 120px;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: unset;
+    background-size: contain !important;
+    background-position: 50% !important;
+    background-repeat: no-repeat !important;
+    margin-bottom: 15px;
+    transition: all .1s linear;
+    border: 1px solid #d9e4f4
+}
+
+.list .item:focus {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, .25), 0 4px 20px rgba(0, 0, 0, .19)
+}
+
+.list .item:last-child {
+    margin-bottom: 0
+}
+
+.list .item.active, .list .item:hover {
+    /*box-shadow: 0 4px 4px rgba(0, 0, 0, .25), 0 4px 20px #3d5c9f;*/
+    /*border: none*/
+    border: 1px solid #3d5c9f
+}
+
+
+.maket-3 .field_2 *, .maket-3 .field_3 * {
+    line-height: 1.7em
+}
+
+@media print {
+    .maket-1 .field div {
+        background: unset
+    }
+}
+
+.maket-3 .line .field-date,
+.maket-3 .line .field-date {
+    text-align: center;
+    justify-content: center
+}
+
+.makets {
+    overflow-x: auto
+}
+
+.maket-3 .line .field-value {
+    text-align: left;
+    justify-content: flex-start
+}
+
+
+.maket-4 .line .field * {
+    line-height: 1.75em
+}
+
+.maket-5 .line .field * {
+    line-height: 1.7em
+}
+
+.openTheme-field_dispanser, .openTheme-field_kontingent {
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    background: #3d5c9f;
+    color: #fff;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    position: absolute;
+    left: 26px;
+}
+
+.openTheme-field_dispanser {
+    top: 398px !important;
+}
+
+.openTheme-field_kontingent {
+    top: 425px !important;
+}
+
+.maket-oftalm-1 .field_0 {
+}
+
+
+/*для всех форм*/
+.maket .field.day input {
+    padding: 0px 0 0px 5px;
+    letter-spacing: 14px;
+    text-align: center;
+    text-indent: 0px;
+    font-variant-numeric: tabular-nums;
+}
+
+.maket .field.docYear input,
+.maket .field.day input {
+    background: transparent;
+}
+
+.vdpClearInput {
+    display: none;
+}
+
+.vdpComponent.vdpWithInput > input {
+    padding-right: 0px !important;
+}
+
+
+/*для всех форм*/
+
+
+/*.maket .field > div, .maket .field > input {*/
+/*background: rgb(255 0 0 / 32%);*/
+/*}*/
+
+
+.vdpComponent.vdpWithInput > input {
+    background: transparent;
+    border: none;
+}
+
+.btn-radius-ico {
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    padding: 0px;
+    font-size: 14px;
+}
+
+.dataTables_wrapper tr:hover {
+    cursor: pointer;
+}
+
+.modal-fields.modal-themes .vdpWithInput input {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.select2-container--default .select2-selection--multiple {
+    border: 1px solid #ced4da !important;
+}
+
+.select2-dropdown {
+    border: 1px solid #ced4da;
+}
+
+.addStatus i {
+    position: absolute;
+    right: -8px;
+    top: -10px;
+    color: #28a745 !important;
+    font-size: 18px;
+}
+
+.pagination .page.journal {
+
+    border: 2px solid #28a745;
+}
+
+.form-group .vdpWithInput {
+    width: 100%;
+}
+
+.form-group .vdpWithInput input {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+@page {
+    size: landscape;
+    margin: 0mm;
+}
+
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+    }
+
+    .cab_containers .container.p-4.mb-4,
+    .addStatus,
+    .addPage,
+    .deletePage,
+    .btn-save,
+    .workbench > .btn-print,
+    .pagination {
+        display: none;
+    }
+
+    .maket-1 .field_0 *, .maket-1 .field_0 > div {
+
+        font-size: 14px !important;
+    }
+
+    .maket .field_0, .maket .field_1 {
+        font-size: 14px !important;
+
+        line-height: 1.35em;
+    }
+
+    .maket .field {
+
+        font-size: 14px !important;
+
+    }
+
+    /*.maket-oftalm-1 .field_0 {*/
+    /*    top: 90px;*/
+    /*}*/
+    .maket-oftalm-1 .field_1 {
+        top: 106px !important;
+
+        /*font-size: 10px;*/
+        /*display: none;*/
+    }
+
+    .maket-oftalm-1 .field_2 input {
+        top: 164px;
+        left: 196px;
+        width: 195px;
+        height: 19px;
+        font-size: 13px !important;
+    }
+}
+
+
+/*@page {*/
+/*    margin: 0.5cm;*/
+/*}*/
+/*@page :left {*/
+/*    margin: 0.5cm;*/
+/*}*/
+
+/*@page :right {*/
+/*    margin: 0.8cm;*/
+/*}*/
+
+/*@page :first {*/
+/*    margin: 1cm 2cm;*/
+/*}*/
+
+
+/*start Print style 043 - 025*/
+@media print {
+
+
+    .header, .list, .pagination, .workbench .btn-my {
+        display: none !important
+    }
+
+    .workbench > .btn-print {
+        display: block !important
+    }
+
+    /*.cab_containers {*/
+    /*padding: 0 !important*/
+    /*}*/
+    .workbench {
+        margin-bottom: 0 !important;
+        margin-left: 0
+    }
+
+    .react-easy-print-print {
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center
+    }
+
+    .maket {
+        height: 100vh;
+        position: relative !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: block !important
+    }
+
+    .cab .container {
+        box-shadow: none;
+        padding: 0
+    }
+
+    /*.cab_containers {*/
+    /*position: relative;*/
+    /*top: 0;*/
+    /*background: #fff*/
+    /*}*/
+    .maket .field {
+        transform: scale(.9)
+    }
+
+    .maket .field * {
+        font-size: 12px !important
+    }
+
+    .maket .field.name {
+        top: 269px;
+        left: 197px !important;
+        width: 663px
+    }
+
+    .maket .field > div, .maket .field > input {
+        background: unset !important
+    }
+
+    .maket .field.number {
+        top: 204px !important;
+        left: 56% !important;
+        width: 130px !important
+    }
+
+    .maket .field.year {
+        top: 255px;
+        left: 430px;
+        width: 65px;
+        text-align: center
+    }
+
+    .maket .field.month {
+        top: 255px;
+        left: 537px;
+        width: 108px;
+        text-align: center
+    }
+
+    .openTheme {
+        display: none !important
+    }
+
+    .maket .field {
+        line-height: 1.2em !important
+    }
+
+    .maket .field * {
+        font-size: 11px !important
+    }
+
+    .maket .field.day {
+        top: 251px;
+        left: 567px;
+        width: 136px;
+        text-align: center
+    }
+
+    .maket .field.day * {
+        letter-spacing: 12px
+    }
+
+
+    .maket .field.name {
+        top: 213px;
+        left: 173px !important;
+        width: 700px
+    }
+
+    .maket .field.address {
+        top: 324px;
+        left: 133px
+    }
+
+    .maket .field.phone {
+        top: 324px;
+        left: 48%;
+        width: 376px
+    }
+
+    .maket .field_2 {
+        top: 175px;
+        left: 190px;
+        width: 175px
+    }
+
+    .maket .field_2, .maket .field_2 *, .maket .field_3 {
+        letter-spacing: 14px !important
+    }
+
+    .maket .field_3 {
+        top: 175px;
+        left: 46.2%;
+        width: 135px
+    }
+
+    .maket .field_3 * {
+        letter-spacing: 12px !important
+    }
+
+    .maket .field_4 {
+        top: 175px;
+        left: 60.2%;
+        width: 95px
+    }
+
+    .maket .field_4, .maket .field_4 * {
+        letter-spacing: 20px !important
+    }
+
+    .maket .field_5 {
+        top: 317px;
+        left: 6px;
+        width: 891px
+    }
+
+    .maket .field_7 {
+        top: 351px;
+        left: 6px;
+        width: 891px
+    }
+
+    .maket .field_8 {
+        top: 413px;
+        left: 6px;
+        width: 891px
+    }
+
+    .maket .field_9 {
+        top: 473px;
+        left: 6px;
+        width: 891px
+    }
+
+    .maket .field_1 {
+        top: 78px !important
+    }
+
+    .maket .field.address {
+        top: 278px;
+        left: 113px;
+        width: 400px
+    }
+
+    .maket .field.phone {
+        top: 278px;
+        left: 41.25%;
+        width: 380px
+    }
+
+    /*.maket-2 .field-p2-main {*/
+    /*top: 6%;*/
+    /*width: 305px;*/
+    /*left: 43.5%;*/
+    /*height: 30px*/
+    /*}*/
+    .maket-3 .line-15 {
+        margin-bottom: 18px !important
+    }
+
+    .maket-3 .line {
+        height: 17.85px
+    }
+
+    .maket-4 .line {
+        height: 20.1px;
+        height: 17.95px
+    }
+
+
+    .maket-3 .lines {
+        left: 4.8%;
+        width: 70% !important
+    }
+
+    .maket-4 .lines {
+        left: 3.8%;
+        width: 70% !important
+    }
+
+    .maket-3 .line .field-date {
+        width: 11.5%;
+        width: 105px
+    }
+
+    .maket-3 .line {
+        justify-content: flex-start;
+        align-items: center
+    }
+
+    .maket-3 .line .field-value {
+        width: 11.5%;
+        width: calc(100% - 80px) !important;
+        margin-left: -40px
+    }
+
+    .maket-4 .line .field-value {
+        margin-left: -23px
+    }
+
+    .maket-3 .field-doctor {
+        left: 8.5%;
+        width: auto !important
+    }
+
+    .maket-3 .field-deputy_department {
+        right: unset !important;
+        left: 47.5% !important;
+        width: 255px !important
+    }
+
+    .maket .field.number {
+        top: 200px !important;
+        right: unset !important;
+        left: 49% !important;
+        width: 49px !important
+    }
+
+    .maket .field_1 {
+        left: 4.9%;
+        top: 115px !important;
+        width: 312px
+    }
+
+    .maket .field_5 {
+        top: 308px;
+        left: 8px;
+        width: 790px
+    }
+
+    .maket .field_7 {
+        top: 337px;
+        left: 9px;
+        width: 786px
+    }
+
+    .maket .field_8 {
+        top: 378px;
+        left: 9px;
+        width: 786px
+    }
+
+    /*.maket .field.tr_1 {*/
+    /*left: 227px*/
+    /*}*/
+    /*.maket .field.tr_1, .maket .field.tr_5 {*/
+    /*position: absolute;*/
+    /*height: 17px;*/
+    /*top: 405px;*/
+    /*width: 62px;*/
+    /*text-align: center;*/
+    /*transform: scale(.8)*/
+    /*}*/
+    .maket .field.tr_5 {
+        left: 476px
+    }
+
+    .maket .field.tr_9 {
+        position: absolute;
+        height: 17px;
+        top: 405px;
+        left: 699px;
+        width: 62px;
+        text-align: center;
+        transform: scale(.8)
+    }
+
+    .maket .field.tr_2 {
+        left: 227px
+    }
+
+    .maket .field.tr_2, .maket .field.tr_6 {
+        position: absolute;
+        height: 17px;
+        top: 418px;
+        width: 62px;
+        text-align: center;
+        transform: scale(.8)
+    }
+
+    .maket .field.tr_6 {
+        left: 476px
+    }
+
+    .maket .field.tr_10 {
+        position: absolute;
+        height: 17px;
+        top: 418px;
+        left: 699px;
+        width: 62px;
+        text-align: center;
+    }
+
+    .maket .field.tr_3 {
+        left: 227px
+    }
+
+    .maket .field.tr_3, .maket .field.tr_7 {
+        position: absolute;
+        height: 17px;
+        top: 432px;
+        width: 62px;
+        text-align: center;
+        transform: scale(.8)
+    }
+
+    .maket .field.tr_7 {
+        left: 476px
+    }
+
+    /*.maket .field.tr_11 {*/
+    /*position: absolute;*/
+    /*height: 17px;*/
+    /*top: 434px;*/
+    /*left: 699px;*/
+    /*width: 62px;*/
+    /*text-align: center;*/
+    /*transform: scale(.8)*/
+    /*}*/
+    .maket .field.tr_4 {
+        left: 227px
+    }
+
+    .maket .field.tr_4, .maket .field.tr_8 {
+        position: absolute;
+        height: 17px;
+        top: 445px;
+        width: 62px;
+        text-align: center;
+        transform: scale(.8)
+    }
+
+    .maket .field.tr_8 {
+        left: 476px
+    }
+
+    .maket .field.tr_12 {
+        position: absolute;
+        height: 17px;
+        top: 445px;
+        left: 699px;
+        width: 62px;
+        text-align: center;
+        transform: scale(.8)
+    }
+
+
+    .maket-3 .field_1 {
+        left: 40px;
+        top: 85px !important;
+        width: 312px
+    }
+
+    .maket-3 .field_2 {
+        top: 111px;
+        left: 15px;
+        width: 774px;
+        letter-spacing: normal !important
+    }
+
+
+    .maket-3 .field_3 {
+        top: 253px;
+        left: 15px;
+        width: 774px;
+        letter-spacing: normal !important
+    }
+
+    .maket-3 .field * {
+        line-height: 17px !important;
+        letter-spacing: normal !important
+    }
+
+    .maket .field_4 {
+        top: 343px;
+        left: 108px
+    }
+
+    .maket-3 .field_6 {
+        top: 402px;
+        left: 13px;
+        width: 74%
+    }
+
+    .maket .field_5 {
+        top: 372px;
+        left: 13px
+    }
+
+    .maket-4 .lines {
+        left: 48px;
+        width: 67.5% !important
+    }
+
+    .maket-4 .line .field-date {
+        min-width: 125px
+    }
+
+    /*.maket-4 .line .field-value {*/
+    /*width: auto;*/
+    /*min-width: 644px;*/
+    /*margin-left: -31px*/
+    /*}*/
+    .maket-4 .line {
+        height: 15.6px
+    }
+
+    .maket-4 .line-14 {
+        margin-bottom: 17px
+    }
+
+    .maket-4 .line-15, .maket-4 .line-16, .maket-4 .line-17, .maket-4 .line-18, .maket-4 .line-19, .maket-4 .line-20, .maket-4 .line-21, .maket-4 .line-22 {
+        height: 13.3px
+    }
+
+    .maket-4 .line-21 {
+        position: absolute;
+        top: 319px;
+        width: 140px;
+        left: 182px
+    }
+
+    .maket-4 .line-21 .field-date {
+        display: none !important
+    }
+
+    /*.maket-4 .line-21 .field-value {*/
+    /*min-width: 0 !important;*/
+    /*width: 100%;*/
+    /*margin-left: 0 !important;*/
+    /*margin-right: 0 !important*/
+    /*}*/
+    .maket-4 .line-22 {
+        position: absolute;
+        top: 319px;
+        width: 122px;
+        left: 321px
+    }
+
+    .maket-4 .line-22 .field-date {
+        display: none !important
+    }
+
+    /*.maket-4 .line-22 .field-value {*/
+    /*min-width: 0 !important;*/
+    /*width: 100%;*/
+    /*margin-left: 0 !important;*/
+    /*margin-right: 0 !important*/
+    /*}*/
+    .maket-5 .line {
+        height: 15.6px !important
+    }
+
+    .maket-5 .line-21, .maket-5 .line-22 {
+        top: 327px
+    }
+
+
+    .maket-1 .field_2 {
+        top: 132px;
+        left: 135px;
+        width: 182px
+    }
+
+    .maket-1 .field.phone {
+        top: 258px;
+        left: 655px;
+        width: 112px
+    }
+
+    .maket-1 .field_5 {
+        top: 307px;
+        left: 9px
+    }
+
+    .maket-1 .field_8 {
+        top: 365px;
+        left: 211px;
+        width: 686px
+    }
+
+    .maket-1 .field.address {
+        top: 258px;
+        left: 186px;
+        width: 445px
+    }
+
+    .maket-1 .field.docYear {
+        width: 77px;
+        height: 20px;
+        top: 182px;
+        left: 360px
+    }
+
+    .maket-1 .field_0 {
+        top: 72px;
+        left: 47px;
+        width: 333px;
+        height: auto
+    }
+
+    .maket-1 .field_1 {
+        left: 47px;
+        top: 85px !important;
+        width: 333px;
+        height: auto
+    }
+
+    .maket-1 .field_5 {
+        top: 273px !important;
+        left: 70px !important;
+        width: 728px !important;
+        top: 314px;
+        left: 70px;
+        width: 728px
+    }
+
+    .maket-1 .field_7 {
+        top: 315px;
+        left: 70px;
+        width: 728px
+    }
+
+    .maket-1 .field_8 {
+        top: 354px;
+        left: 224px;
+        width: 565px
+    }
+
+    .maket-1 .field.sex {
+        top: 204px;
+        left: 237px
+    }
+
+    .maket-1 .field_9 {
+        top: 468px;
+        left: 17px;
+        width: 784px
+    }
+
+    .maket-1 .field.tr {
+        width: 59px !important
+    }
+
+    /*.maket-1 .field.tr_1, .maket-1 .field.tr_2, .maket-1 .field.tr_3, .maket-1 .field.tr_4 {*/
+    /*left: 225px*/
+    /*}*/
+    /*.maket-1 .field.tr_5, .maket-1 .field.tr_6, .maket-1 .field.tr_7, .maket-1 .field.tr_8 {*/
+    /*left: 475px*/
+    /*}*/
+    /*.maket-1 .field.tr_9, .maket-1 .field.tr_10, .maket-1 .field.tr_11, .maket-1 .field.tr_12 {*/
+    /*left: 698px*/
+    /*}*/
+    /*.maket-1 .field.tr_1, .maket-1 .field.tr_5, .maket-1 .field.tr_9 {*/
+    /*top: 394px*/
+    /*}*/
+    /*.maket-1 .field.tr_2, .maket-1 .field.tr_6, .maket-1 .field.tr_10 {*/
+    /*top: 407px*/
+    /*}*/
+    /*.maket-1 .field.tr_3, .maket-1 .field.tr_7 {*/
+    /*top: 421px*/
+    /*}*/
+    /*.maket-1 .field.tr_11 {*/
+    /*top: 423px*/
+    /*}*/
+    .maket .field.tr_11 input,
+    .maket .field.tr_12 input {
+        transform: scale(0.9);
+    }
+
+    .maket-1 .field.tr_12 {
+        top: 437px
+    }
+
+    .maket-1 .field.tr_4, .maket-1 .field.tr_8 {
+        top: 435px
+    }
+
+    .maket-1 .field.phone {
+        top: 259px !important;
+        left: 660px !important
+    }
+
+    .maket-1 .field_9 {
+        top: 469px !important;
+        left: 24px !important;
+        width: 777px !important
+    }
+
+    /*.maket-1 .field.number {*/
+    /*top: 168px !important;*/
+    /*right: unset !important;*/
+    /*left: 49% !important;*/
+    /*width: 49px !important*/
+    /*}*/
+    .maket-1 .field.day {
+        top: 230px;
+        left: 470px;
+        width: 136px;
+        text-align: center;
+        transform: scale(.95)
+    }
+
+    /*.maket-2 .field-p2-main {*/
+    /*top: 17.5%;*/
+    /*width: 72.8%;*/
+    /*right: unset !important;*/
+    /*left: 27px;*/
+    /*height: auto*/
+    /*}*/
+    .maket-3 .field_1 {
+        left: 93px;
+        top: 79px !important;
+        width: 695px
+    }
+
+    .maket-3 .field_2 {
+        top: 117px;
+        left: 32px;
+        width: 759px
+    }
+
+    .maket-3 .field_4 {
+        top: 337px;
+        left: 198px
+    }
+
+    .maket-3 .field_5_date {
+        top: 366px;
+        left: 306px;
+        width: 145px
+    }
+
+    .maket-4 .lines {
+        width: 67% !important
+    }
+
+    .maket-4 .line-14 {
+        margin-bottom: 0
+    }
+
+    .maket-4 .line-15, .maket-4 .line-16, .maket-4 .line-17, .maket-4 .line-18, .maket-4 .line-19, .maket-4 .line-20, .maket-4 .line-21, .maket-4 .line-22 {
+        height: 16px
+    }
+
+    .maket-3 .field_6_date {
+        top: 396px;
+        left: 306px;
+        width: 145px
+    }
+
+    .maket-3 .field_3 {
+        left: 32px;
+        width: 759px;
+        top: 259px
+    }
+
+    .maket-4 .line-23 {
+        position: absolute;
+        top: 351px;
+        width: 189px;
+        left: 158px
+    }
+
+    .maket-4 .line-21, .maket-4 .line-22 {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%
+    }
+
+    .maket-5 .line {
+        height: 15.4px !important
+    }
+
+    .maket-5 .line-15, .maket-5 .line-16, .maket-5 .line-17, .maket-5 .line-18, .maket-5 .line-19 {
+        height: 13px !important
+    }
+
+    .maket-5 .line-14 {
+        height: 15px !important
+    }
+
+    .maket-5 .line-22 {
+        width: 186px;
+        left: 160px;
+        top: 7px
+    }
+
+
+    .maket-4 .line-23 {
+        left: -40px !important
+    }
+
+    .maket .sign {
+        position: absolute;
+        bottom: 53px;
+        background-size: cover !important;
+        background-position: 50%;
+        transform: scale(.8);
+        left: 400px
+    }
+
+    .maket-5 .sign {
+        bottom: 76px
+    }
+
+    .maket, .makets {
+        overflow: hidden !important
+    }
+
+    .maket-3 .field_2 div, .maket-3 .field_2 div *, .maket-3 .field_3 *, .maket-3 .field_3 div {
+        line-height: 1.6em !important
+    }
+
+    .maket-4 .line .field * {
+        line-height: 1.7em;
+        font-size: 10px !important
+    }
+
+    .maket .field.id {
+        display: none !important
+    }
+
+    .maket .field * {
+        font-size: 10px !important
+    }
+
+    /*.maket-2 .field-p2-main {*/
+    /*top: 17.2%*/
+    /*}*/
+    /*.maket-2 .field-p2-main * {*/
+    /*line-height: 1.6em*/
+    /*}*/
+    .maket-3 .field_2 div, .maket-3 .field_2 div *, .maket-3 .field_3 *, .maket-3 .field_3 div {
+        line-height: 1.75em !important
+    }
+
+    .maket-3 .field_7 {
+        top: 408px;
+        left: 32px;
+        width: 759px
+    }
+
+    .maket-3 .field_7 * {
+        line-height: 15px !important
+    }
+
+    .maket .field {
+        /*font-size: 20pt!important;*/
+        /*color: red;*/
+        color-adjust: exact;
+    }
+
+    .maket .field.day input {
+        padding-left: 3px;
+        letter-spacing: 13px;
+    }
+
+    /*.maket .field.tr_1 *, .maket .field.tr_2 *, .maket .field.tr_3 *, .maket .field.tr_4 *, .maket .field.tr_5 *, .maket .field.tr_6 *, .maket .field.tr_7 *, .maket .field.tr_8 *, .maket .field.tr_9 *, .maket .field.tr_10 * {*/
+    /*padding: 0 10px;*/
+    /*}*/
+    /*.maket .field.tr_1 {*/
+    /*position: absolute;*/
+    /*height: 17px;*/
+    /*top: 524px;*/
+    /*left: 300px;*/
+    /*width: 72px;*/
+    /*text-align: center;*/
+    /*}*/
+
+}
+
+/*end Print style 043 - 025*/
+
+
+/*start 025 print style*/
+
+@media print {
+    /*.maket.maket-oftalm-1 .field.docYear {*/
+    /*width: 77px;*/
+    /*height: 20px;*/
+    /*top: 190px;*/
+    /*left: 360px*/
+    /*}*/
+    /*.maket-oftalm-1 .field_0 {*/
+    /*    top: px;*/
+    /*    left: 90px;*/
+    /*    width: 393px;*/
+    /*    height: 20px;*/
+    /*}*/
+    .maket.maket-oftalm-1 .field.field_0 {
+        top: 62px;
+    }
+
+    .maket.maket-oftalm-1 .field.field_1 {
+        top: 77px !important;
+        font-size: 18pt;
+        /*line-height: 1.35em;*/
+        /*height: 40px;*/
+    }
+
+    .maket-oftalm-1 .field_1 {
+        left: 4.9%;
+        top: 115px !important;
+        width: 312px;
+    }
+
+    .maket-oftalm-1 .field_2 {
+        top: 122px;
+        left: 132px;
+        width: 182px;
+        font-size: 10px !important;
+    }
+
+    .maket-oftalm-1 .field_2 input {
+        font-size: 10px !important;
+        padding-left: 0px;
+        /*height: 100%;*/
+    }
+
+
+    /*.maket-oftalm-1 .field.number {*/
+    /*top: 175px !important;*/
+    /*right: unset !important;*/
+    /*left: 48% !important;*/
+    /*width: 49px !important;*/
+    /*background: rgba(255, 0, 0, 0.58);*/
+    /*}*/
+    .maket-oftalm-1 .field.day {
+        top: 240px;
+        left: 470px;
+        width: 136px;
+        text-align: center;
+        transform: scale(.95);
+    }
+
+    .maket-oftalm-1 .field_5 {
+        top: 285px !important;
+        left: 146px !important;
+        width: 648px !important;
+    }
+
+    .maket-oftalm-1 .field.address {
+        top: 267px;
+        left: 199px;
+        width: 445px;
+    }
+
+    .maket-1 .field.phone {
+        top: 267px !important;
+        left: 660px !important;
+    }
+
+    .maket-1 .field.sex {
+        top: 236px;
+        left: 239px;
+    }
+
+    .maket-oftalm-1 .field.sex {
+        top: 243px;
+        left: 241px;
+    }
+
+
+    .maket-oftalm-1 .dispanser {
+        top: 305px;
+        left: 242px;
+
+
+    }
+
+    .maket-oftalm-1 .kontingent_text {
+        top: 387px;
+        left: 59px;
+        width: 180px;
+    }
+
+    .maket-oftalm-1 .kontingent {
+        top: 385px;
+        left: 244px;
+    }
+
+
+    .maket-oftalm-1 .privilege_num input,
+    .maket-oftalm-1 .privilege_date_1 input,
+    .maket-oftalm-1 .privilege_date_2 input {
+        letter-spacing: 10px !important;
+
+    }
+
+    .maket-oftalm-1 .privilege_num {
+        top: 403px;
+        left: 210px;
+    }
+
+
+    .maket-oftalm-1 .privilege_date_1 {
+        top: 428px;
+        left: 213px;
+    }
+
+    .maket-oftalm-1 .privilege_text_1 {
+        width: 145px;
+        top: 428px;
+        left: 346px;
+    }
+
+    .maket-oftalm-1 .privilege_date_2 {
+        top: 453px;
+        left: 213px;
+    }
+
+    .maket-oftalm-1 .privilege_text_2 {
+        width: 145px;
+        top: 451px;
+        left: 346px;
+    }
+
+    .maket-oftalm-2 .field_blood {
+        top: 107px;
+        left: 122px;
+    }
+
+    .maket-oftalm-2 .field_resus {
+        top: 107px;
+
+        left: 346px;
+    }
+
+
+    .maket-oftalm-2 .field_blood_transfusion {
+
+        top: 134px;
+        /*top: 176px;*/
+        left: 212px;
+        /*left: 325px;*/
+    }
+
+    .maket-oftalm-2 .field_diabet {
+
+        top: 160px;
+        left: 120px;
+    }
+
+    .maket-oftalm-2 .field_infection {
+
+        top: 186px;
+        left: 163px;
+
+    }
+
+    .maket-oftalm-2 .field_hirurgion {
+
+        top: 212px;
+        left: 145px;
+    }
+
+    .maket-oftalm-2 .field_alergion {
+
+        top: 286px;
+        left: 163px;
+    }
+
+    .maket-oftalm-2 .field_preparate {
+
+        top: 314px;
+
+        left: 241px;
+    }
+
+    .maket-oftalm-2 .field_factorrisk {
+        top: 359px;
+        left: 113px;
+    }
+
+}
+
+.maket-2.maket-oftalm-2 .field {
+    position: absolute;
+}
+
+
+.maket-1.maket-oftalm-1 {
+
+}
+
+
+/*end 025 print style*/
+
+
+/*start conclusion page*/
+
+/*@media print{*/
+/*    .modal-oft-conclusion{*/
+
+/*    }*/
+
+/*}*/
+/*@page {*/
+/*    size: A4!important;*/
+/*    margin: 0;*/
+/*}*/
+/*end conclusion page*/
+
+
+/*@page {*/
+/*    size: a5 landscape;*/
+/*    margin: 0;*/
+/*}*/
+/*.maket .field {*/
+
+/*    font-size: 14px !important;*/
+
+/*}*/
+/*.maket .field {*/
+/*    transform: scale(.9)*/
+/*}*/
+
+/*.maket .field * {*/
+/*    font-size: 12px !important*/
+/*}*/
+/*.maket .field {*/
+/*    line-height: 1.2em !important*/
+/*}*/
+
+/*.maket .field * {*/
+/*    font-size: 11px !important*/
+/*}*/
+/*.maket .field.id {*/
+/*    display: none !important*/
+/*}*/
+
+/*.maket .field * {*/
+/*    font-size: 10px !important*/
+/*}*/
+
+
+/*.maket-4 .line .field-date {*/
+
+/*}*/
+
+/*.maket-4 .line .field-date .vdpOuterWrap {*/
+/*line-height: normal;*/
+/*width: auto;*/
+/*}*/
+
+/*.maket-4 .line .field-date .vdpInnerWrap {*/
+/*line-height: normal;*/
+/*width: auto;*/
+/*}*/
+
+
+.maket-4 .line .field.field-date * {
+    /*line-height: normal;*/
+    /*width: auto;*/
+    /*height: auto;*/
+}
+
+.vdpPeriodControl {
+    width: auto;
+
+}
+
+.date-pick-right .vdpFloating.vdpPositionLeft {
+    left: auto;
+    right: 0;
+    bottom: 100%;
+    top: auto;
+
+}
+
+.table-responsive-lg {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+
+@media (min-width: 1481px) {
+    .cab_containers.fix-menu {
+        display: flex;
+        justify-content: center;
+        align-items: self-start;
+
+    }
+
+    .cab_containers.fix-menu .patient-menu {
+        position: relative !important;
+        float: none;
+        z-index: 99;
+        width: 210px;
+        margin-right: 30px !important;
+        margin-left: 0 !important;
+
+    }
+
+    .patient-menu .nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .patient-menu {
+        position: absolute !important;
+        float: left;
+        z-index: 999;
+        width: 210px;
+    }
+}
+
+@media (max-width: 1480px) {
+
+    .cab .container {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+
+/*<style>*/
+.makets {
+    position: relative;
+    background: green;
+
+}
+
+.maket {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: auto;
+    min-height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.maket-1 {
+    /*background: red;*/
+}
+
+.maket-2,
+.maket-3,
+.maket-4,
+.maket-5,
+.maket-6 {
+    page-break-before: always;
+    /*background: green;*/
+
+}
+
+/*</style>*/
+.field {
+    /*background: rgba(179, 0, 0, 0.44);*/
+    font-size: 10px;
+
+}
+
+.maket-1 .field.number {
+    top: 170px;
+    right: 226px;
+    width: 50px;
+    /*height: 20px;*/
+    text-align: center;
+}
+
+
+.maket-1 .field.name {
+    top: 214px;
+    left: 208px;
+    width: 550px;
+    font-size: 10px !important;
+
+}
+
+.maket-1 .field.docYear {
+    top: 186px;
+    left: 366px;
+    width: 60px;
+
+}
+
+.maket-1 .field.day {
+
+    top: 234px;
+    left: 476px;
+    width: 124px;
+    /*height: 20px;*/
+    padding: 0px 0 0px 0px;
+    letter-spacing: 10px;
+    text-align: center;
+    text-indent: 0px;
+    font-variant-numeric: tabular-nums;
+
+}
+
+.maket-1 .field.month {
+    /*не нашел*/
+
+    /*top: 170px;*/
+    /*right: 226px;*/
+    /*width: 50px;*/
+    /*height: 20px;*/
+    /*background: red;*/
+}
+
+.maket-1 .field.address {
+    top: 258px;
+    left: 206px;
+    width: 394px;
+    font-size: 10px !important;
+
+}
+
+.maket-1 .field.phone {
+    top: 258px;
+    left: 666px;
+    width: 104px;
+    font-size: 10px !important;
+}
+
+.maket-1 .field.field_0 {
+    top: 68px;
+    left: 64px;
+    width: 300px;
+    font-size: 10px !important;
+}
+
+.maket-1 .field.field_1 {
+    /*адрес клиники*/
+    top: 85px;
+    left: 64px;
+    width: 300px;
+    height: auto;
+    font-size: 10px !important;
+    line-height: 11px !important;
+}
+
+.maket-1 .field.field_2 {
+    top: 137px;
+    left: 150px;
+    width: 150px;
+    line-height: 6px;
+    height: auto;
+    font-size: 10px !important;
+    padding: 0px 0 0px 0px;
+    letter-spacing: 12px;
+    text-align: center;
+    text-indent: 0px;
+    font-variant-numeric: tabular-nums;
+}
+
+/*.maket-1 .field.field_3 {*/
+/*}*/
+
+/*.maket-1 .field.field_4 {*/
+/*}*/
+
+.maket-1 .field.field_5 {
+    top: 275px;
+    left: 106px;
+    width: 660px;
+    height: auto;
+    font-size: 10px !important;
+    line-height: 11px !important;
+}
+
+.maket-1 .field.field_7 {
+    top: 317px;
+    left: 106px;
+    width: 660px;
+    height: auto;
+    font-size: 10px !important;
+    line-height: 11px !important;
+}
+
+.maket-1 .field.field_8 {
+    top: 357px;
+    left: 252px;
+    width: 660px;
+    height: auto;
+    font-size: 10px !important;
+    line-height: 11px !important;
+}
+
+.maket-1 .field.field_9 {
+    top: 472px;
+    left: 62px;
+    width: 700px;
+    height: auto;
+    font-size: 10px !important;
+    line-height: 11px !important;
+}
+
+.maket-1 .field.sex {
+    top: 234px;
+    left: 240px;
+    width: 14px;
+}
+
+
+.maket-1 .field.tr {
+    height: 14px;
+    line-height: 12px !important;
+    text-align: center !important;
+}
+
+
+.maket-1 .field.tr_1.leftAlign {
+    top: 396px;
+    left: 227px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_1.rightAlign {
+    top: 396px;
+    left: 254px;
+    width: 28px;
+
+}
+
+
+.maket-1 .field.tr_1.leftAlign {
+    top: 396px;
+    left: 227px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_1.rightAlign {
+    top: 396px;
+    left: 254px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_2.leftAlign {
+    top: 409px;
+    left: 227px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_2.rightAlign {
+    top: 409px;
+    left: 254px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_3.leftAlign {
+    top: 423px;
+    left: 227px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_3.rightAlign {
+    top: 423px;
+    left: 254px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_4.leftAlign {
+    top: 437px;
+    left: 227px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_4.rightAlign {
+    top: 437px;
+    left: 254px;
+    width: 28px;
+
+}
+
+
+.maket-1 .field.tr_5.leftAlign {
+    top: 396px;
+    left: 477px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_5.rightAlign {
+    top: 396px;
+    left: 506px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_6.leftAlign {
+    top: 409px;
+    left: 477px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_6.rightAlign {
+    top: 409px;
+    left: 506px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_7.leftAlign {
+    top: 423px;
+    left: 477px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_7.rightAlign {
+    top: 423px;
+    left: 506px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_8.leftAlign {
+    top: 437px;
+    left: 477px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_8.rightAlign {
+    top: 437px;
+    left: 506px;
+    width: 28px;
+}
+
+
+.maket-1 .field.tr_9.leftAlign {
+    top: 396px;
+    left: 704px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_9.rightAlign {
+    top: 396px;
+    left: 730px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_10.leftAlign {
+    top: 409px;
+    left: 704px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_10.rightAlign {
+    top: 409px;
+    left: 730px;
+    width: 28px;
+
+}
+
+.maket-1 .field.tr_11 {
+    top: 424px;
+    left: 700px;
+    width: 60px;
+    font-size: 12px !important;
+    transform: scale(.7)
+}
+
+.maket-1 .field.tr_12 {
+    top: 437px;
+    left: 700px;
+    width: 60px;
+    font-size: 12px !important;
+    transform: scale(.7)
+}
+
+
+/*макет  2 nnnnnnnnnnnnnnnnnnnnnnnnnnnn 2*/
+
+.maket-2 .field-p2-main {
+    position: absolute;
+    top: 97px;
+    left: 65px;
+    width: 690px;
+    height: auto;
+    font-size: 10px !important;
+    line-height: 12px !important;
+
+}
+
+.ctable_title {
+    /*position: relative!important;*/
+    /*top: auto!important;*/
+    /*right: auto!important;*/
+    /*left: auto!important;*/
+}
+
+.ctable_fields {
+    position: relative;
+    /*background: #0CEEFF;*/
+    /*не нужно*/
+}
+
+.ctable_fields .field {
+    width: 26px;
+    height: 260px;
+    /*background: #0a6fa4;*/
+    /*border: 1px solid #0a6fa4;*/
+}
+
+
+.maket-2 .field {
+    position: relative
+}
+
+.maket-2 .fields_container {
+    position: absolute;
+    top: 159px;
+    left: 49px;
+    width: 710px;
+    height: 252px;
+    /*background: rgba(173, 255, 47, 0.71);*/
+}
+
+
+.maket-2 .fields_container .ctable .ctable_title .field {
+    /*background: rgba(39, 46, 20, 0.46);*/
+    /*width: 60px;*/
+    /*height: 20px;*/
+    /*background: red;*/
+}
+
+.maket-2 .fields_container .ctable_title {
+
+    /*border-bottom: 1px solid red;*/
+}
+
+.maket-2 .fields_container .ctable_title .field {
+    width: 104px;
+    height: 26px !important;
+    /*background: rgba(128, 128, 128, 0.33);*/
+    line-height: 20px;
+    text-align: center;
+}
+
+
+.maket-2 .fields_container .ctable_fields .field {
+    width: 38px;
+    height: 26px !important;
+    line-height: 20px;
+    text-align: center;
+}
+
+
+.maket-3 .field_1 {
+    top: 77px;
+    left: 131px;
+    width: 124px;
+
+}
+
+.maket-3 .field_2 {
+    top: 122px;
+    left: 70px;
+    width: 688px;
+    height: auto !important;
+    line-height: 13px;
+    /*background: rgba(255, 0, 0, 0.45);*/
+}
+
+.maket-3 .field_3 {
+    top: 262px;
+    left: 72px;
+    width: 688px;
+    height: auto !important;
+    line-height: 13px;
+    /*background: rgba(255, 0, 0, 0.45);*/
+}
+
+
+.maket-3 .field_4 {
+    top: 338px;
+    left: 206px;
+    width: 124px;
+    height: auto !important;
+    line-height: 13px;
+    /*background: rgba(255, 0, 0, 0.45);*/
+}
+
+.maket-3 .field_5_date {
+    top: 366px;
+    left: 316px;
+    width: 124px;
+    height: auto !important;
+    line-height: 13px;
+    /*background: rgba(255, 0, 0, 0.45);*/
+}
+
+
+.maket-3 .field_6_date {
+    top: 398px;
+    left: 316px;
+    width: 124px;
+    height: auto !important;
+    line-height: 13px;
+    /*background: rgba(255, 0, 0, 0.45);*/
+}
+
+
+.maket-3 .field_7 {
+    top: 411px;
+    left: 72px;
+    width: 688px;
+    height: auto !important;
+    line-height: 12px;
+    /*background: rgba(255, 0, 0, 0.45);*/
+
+}
+
+.maket-4 .line-1 .field-date {
+    top: 3px !important;
+    left: 0px;
+    width: 126px !important;
+    height: auto !important;
+    line-height: 12px;
+    /*background: rgba(255, 0, 0, 0.45);*/
+    position: absolute;
+    text-align: center;
+    /*width: 150px;*/
+    /*left: 0px;*/
+    /*top: -10px;*/
+}
+
+.maket-4 .line-1 .field-value {
+    width: 588px !important;
+    /*background: rgba(128, 98, 0, 0.33);*/
+    left: 127px;
+    top: 0px !important;
+    height: 350px !important;
+    line-height: 13.4px !important;
+    font-size: 9px !important;
+
+}
+
+.maket-4 .lines {
+    width: 89%;
+    left: 6.1%;
+    top: 127px;
+    position: absolute;
+    display: block;
+    flex-direction: column;
+    /*background: rgba(255, 0, 0, 0.45);*/
+
+}
+
+.maket-4 .line-23 {
+    /*background: rgba(233, 44, 0, 0.45) !important;*/
+    position: absolute !important;
+    left: 130px !important;
+    bottom: 100px !important;
+    /*background: grey !important;*/
+    height: 20px !important;
+}
+
+
+.maket-4 .line-23 .field-value {
+    height: 20px;
+    position: absolute !important;
+    bottom: 116px !important;
+    left: 30px !important;
+    display: block !important;
+    /*background: rgba(255, 0, 0, 0.45) !important;*/
+
+}
+
+.maket-4 .line-23 .signature {
+    height: 50px !important;
+    width: 130px !important;
+    position: absolute !important;
+    bottom: 110px !important;
+    left: 230px !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
+    background-position: center !important;
+    /*background: rgba(36, 255, 15, 0.45) !important;*/
+    /*border: 1px solid red;*/
+}
+
+
+.maket-4 .line {
+    /*width: 100%;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: flex-start;*/
+    /*height: 20.6px*/
+}
+
+.maket-4 .line-23 {
+    position: absolute;
+    top: 470px;
+    width: 302px;
+    left: 212px;
+    height: 15px
+}
+
+
+.maket-5 .lines {
+    width: 89%;
+    left: 6.1%;
+    top: 138px;
+    position: absolute;
+    display: block;
+    flex-direction: column;
+    /*background: rgba(255, 0, 0, 0.45);*/
+
+}
+
+.maket-5 .line .field-date {
+    line-height: 13px !important;
+    font-size: 9px !important;
+
+}
+
+.maket-5 .line .field-value {
+    /*width: 588px !important;*/
+    /*background: rgba(128, 98, 0, 0.33);*/
+    /*left: 127px;*/
+    /*top: 0px !important;*/
+    /*height: 320px !important;*/
+    line-height: 13.4px !important;
+    font-size: 9px !important;
+
+}
+
+
+/*.maket-6 .lines {*/
+/*top: 16.9%*/
+/*}*/
+
+/*.maket-6 .line {*/
+/*height: 20.5px*/
+/*}*/
+
+/*.maket-6 .line .field-date {*/
+/*width: 48.5%;*/
+/*display: block*/
+/*}*/
+
+/*.maket-6 .line .field-value {*/
+/*width: 51.5%*/
+/*}*/
+
+/*.maket-6 .line-23 {*/
+/*position: relative;*/
+/*width: 100%;*/
+/*top: 0;*/
+/*left: 0*/
+/*}.maket-6 .line .field-value, .maket-6 .line .field-value * {*/
+/*text-align: center*/
+/*}*/
+
+
+/*.maket-6 .line {*/
+/*height: 15.6px !important*/
+/*}*/
+
+/*.maket-6 .line .field-date, .maket-6 .line .field-value {*/
+/*min-width: 0;*/
+/*width: 50%*/
+/*}*/
+
+/*.maket-6 .line-14 {*/
+/*margin-bottom: 0 !important*/
+/*}*/
+
+/*.maket-6 .line-21, .maket-6 .line-22 {*/
+/*height: 15.6px !important;*/
+/*width: 100%;*/
+/*top: 0;*/
+/*left: 0;*/
+/*position: relative*/
+/*}*/
+
+/*.maket-6 .line-21 .field-date, .maket-6 .line-22 .field-date {*/
+/*display: block !important*/
+/*}*/
+/*.maket-6 .line .field-value {*/
+/*margin-left: -8px*/
+/*}*/
+
+/*.maket-6 .line {*/
+/*height: 15.5px !important*/
+/*}*/
+
+/*.maket-6 .line-23 {*/
+/*position: relative;*/
+/*top: 0;*/
+/*left: 0;*/
+/*width: 100%*/
+/*}*/
+
+
+.maket-6 .field {
+    line-height: 13.4px !important;
+    font-size: 9px !important;
+}
+
+.maket-6 .field-date {
+    position: absolute;
+    width: 340px;
+    left: 52px;
+    top: 95px;
+    /*background: rgba(255, 0, 0, 0.53)*/
+}
+
+.maket-6 .field-value {
+    position: absolute;
+    width: 340px;
+    left: 400px;
+    top: 95px;
+}
+
+
+/*form 025*/
+
+
+/*офтальм поля сигнальные отметки*/
+
+
+.maket-oftalm-block {
+
+}
+
+.maket-oftalm-1 .field_0 {
+    top: 63px !important;
+    left: 90px;
+    width: 393px;
+    height: 20px;
+
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+.maket-oftalm-1 .field_1 {
+    top: 78px !important;
+    width: 393px;
+    height: 58px;
+    left: 90px;
+    font-size: 10px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+
+.maket-oftalm-1 .field_2 {
+    top: 124px !important;
+    left: 155px !important;
+    width: 195px;
+    height: 19px !important;
+    line-height: normal !important;
+    /*background: rgba(255, 0, 0, 0.58);*/
+    padding-left: 0px;
+    text-align: left !important;
+    letter-spacing: 20px;
+    text-indent: 0px !important;
+    font-variant-numeric: tabular-nums !important;
+
+}
+
+.maket .field_2 input,
+.maket-oftalm-1 .field_2 input {
+    padding: 0px 0 0px 5px;
+    letter-spacing: 17px;
+    text-align: center;
+    text-indent: 0px;
+    font-variant-numeric: tabular-nums;
+}
+
+.maket-oftalm-1 .field.number {
+    top: 179px !important;
+    right: unset !important;
+    left: 507px !important;
+    width: 49px !important;
+    /*background: rgba(255, 0, 0, 0.58);*/
+    /*top: 234px;*/
+    /*right: 30.4%;*/
+}
+
+.maket-oftalm-1 .field.docYear {
+    width: 60px;
+    height: 20px;
+    left: 367px;
+    top: 194px !important;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+.maket-oftalm-1 .field.name {
+    top: 222px;
+    left: 219px;
+    width: 550px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+.maket-oftalm-1 .field.sex {
+    top: 243px;
+    left: 243px;
+    height: 19px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+.maket-oftalm-1 .field.day {
+    top: 243px;
+    left: 473px;
+    width: 132px;
+    height: 21px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+.maket-oftalm-1 .field.address {
+    top: 266px;
+    left: 220px !important;
+    width: 393px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+.maket-oftalm-1 .field.phone {
+    top: 266px;
+    left: 665px;
+    width: 136px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+.maket-oftalm-1 .field_5 {
+    top: 286px !important;
+    left: 176px !important;
+    width: 592px !important;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+
+.maket-oftalm-1 .dispanser {
+    top: 305px !important;
+    left: 242px !important;
+    height: 19px;
+    width: 17px;
+    text-align: center;
+    /*background: rgba(255, 0, 0, 0.58);*/
+    font-size: 10px !important;
+}
+
+/*.maket-oftalm-1 .field.dispanser * {*/
+/*height: 100%;*/
+/*!*background: rgba(255, 0, 0, 0.58);*!*/
+
+/*}*/
+
+.maket-oftalm-1 .kontingent {
+    top: 385px;
+    left: 244px !important;
+
+    height: 20px;
+    width: 17px;
+    text-align: center;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+/*.maket-oftalm-1 .field.kontingent * {*/
+/*height: 100%;*/
+/*}*/
+
+.maket-oftalm-1 .kontingent_text {
+    top: 387px;
+    left: 66px !important;
+    height: 20px;
+    width: 166px;
+    text-align: left;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+.maket-oftalm-1 .privilege_num {
+    top: 407px;
+    left: 223px;
+    height: 18px;
+    width: 80px;
+    text-align: left;
+    letter-spacing: 7px;
+    text-indent: 0px !important;
+    font-variant-numeric: tabular-nums !important;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+/*.maket-oftalm-1 .privilege_num input {*/
+
+/*padding: 0 0 0px 5px;*/
+/*letter-spacing: 9px;*/
+/*text-align: center;*/
+/*text-indent: 0px;*/
+/*font-variant-numeric: tabular-nums;*/
+/*background: rgba(255, 0, 0, 0.58);*/
+
+/*}*/
+
+.maket-oftalm-1 .privilege_date_1 {
+    top: 427px;
+    left: 223px;
+    height: 18px;
+    width: 80px;
+    text-align: left;
+    letter-spacing: 7px;
+    text-indent: 0px !important;
+    font-variant-numeric: tabular-nums !important;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+/*.maket-oftalm-1 .privilege_date_1 input {*/
+/*padding: 0 0 0px 5px;*/
+/*width: 106px;*/
+/*letter-spacing: 9px;*/
+/*text-align: center;*/
+/*text-indent: 0px;*/
+/*font-variant-numeric: tabular-nums;*/
+/*}*/
+
+.maket-oftalm-1 .privilege_date_2 {
+    top: 451px;
+    left: 223px;
+    height: 18px;
+    width: 80px;
+    text-align: left;
+    letter-spacing: 7px;
+    text-indent: 0px !important;
+    font-variant-numeric: tabular-nums !important;
+    /*background: rgba(255, 0, 0, 0.58);*/
+}
+
+/*.maket-oftalm-1 .privilege_date_2 input {*/
+/*padding: 0 0 0px 5px;*/
+/*letter-spacing: 9px;*/
+/*text-align: center;*/
+/*text-indent: 0px;*/
+/*font-variant-numeric: tabular-nums;*/
+/*width: 110px;*/
+/*}*/
+
+
+.maket-oftalm-1 .privilege_text_1 {
+    top: 426px;
+    left: 356px;
+    height: 20px;
+    width: 132px;
+    text-align: left;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+.maket-oftalm-1 .privilege_text_2 {
+    top: 450px;
+    left: 356px;
+    height: 20px;
+    width: 132px;
+    text-align: left;
+    /*background: rgba(255, 0, 0, 0.58);*/
+}
+
+
+.maket-oftalm-2 .field_blood {
+    width: 142px;
+    top: 106px;
+    left: 133px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+.maket-oftalm-2 .field_resus {
+    width: 142px;
+    top: 106px;
+    left: 367px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+}
+
+.maket-oftalm-2 .field_blood_transfusion {
+    width: 506px;
+    top: 133px;
+    left: 247px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+.maket-oftalm-2 .field_diabet {
+    width: 594px;
+    top: 160px;
+    left: 160px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+}
+
+.maket-oftalm-2 .field_infection {
+    width: 554px;
+    top: 185px;
+    left: 200px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+}
+
+.maket-oftalm-2 .field_hirurgion {
+    width: 690px;
+    top: 228px;
+    left: 70px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+    line-height: 10px;
+}
+
+.maket-oftalm-2 .field_alergion {
+    width: 556px;
+    top: 286px;
+    left: 200px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+.maket-oftalm-2 .field_preparate {
+    width: 481px;
+    top: 312px;
+    left: 273px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+}
+
+.maket-oftalm-2 .field_factorrisk {
+    width: 601px;
+    top: 358px;
+    left: 153px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+}
+
+.maket-oftalm-2 .field_doctor_signal {
+    width: 200px;
+    height: 60px !important;
+    top: 411px;
+    left: 352px;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+.maket-oftalm-2 .field_doctor_signal_img {
+    width: auto;
+    top: 380px !important;
+    left: 544px !important;
+    height: 60px !important;
+}
+
+.maket-oftalm-2 .field_doctor_signal_img img {
+    width: auto;
+    height: 100%;
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+
+/*офтальм поля сигнальные отметки*/
+
+
+.maket-oftalm-4 {
+    background-position: 0 -10px !important;
+}
+
+.maket-4.maket-oftalm-4 .lines{
+    /*background: rgba(255, 0, 0, 0.58);*/
+
+}
+.maket-4.maket-oftalm-4 .lines {
+    width: 89%;
+    left: 6.1%;
+    top: 137px;
+    position: absolute;
+    display: block;
+    flex-direction: column;
+    /*background: rgba(255, 0, 0, 0.45);*/
+
+}
+
+.maket-4.maket-oftalm-4 .line-23 {
+    /*position: absolute !important;*/
+    /*left: 130px !important;*/
+    /*bottom: 100px !important;*/
+    /*height: 20px !important;*/
+    /*background: rgba(255, 0, 0, 0.45);*/
+
+}
+
+
+.maket-4.maket-oftalm-4 .line-23 .field-value {
+    /*height: 20px;*/
+    /*position: absolute !important;*/
+    bottom: 147px !important;
+    left: 28px !important;
+    /*display: block !important;*/
+    /*background: rgba(255, 0, 0, 0.45) !important;*/
+    /*background: rgba(255, 0, 0, 0.45);*/
+
+
+}
+
+.maket-4.maket-oftalm-4 .line-23 .signature {
+    height: 40px !important;
+    /*width: 130px !important;*/
+    /*position: absolute !important;*/
+    bottom: 140px !important;
+    /*left: 230px !important;*/
+    /*background-repeat: no-repeat !important;*/
+    /*background-size: contain !important;*/
+    /*background-position: center !important;*/
+    /*background: rgba(255, 0, 0, 0.45);*/
+
+
+}
+
+
+.maket {
+    overflow: hidden;
+}
+
+/*.modal-oft-conclusion {*/
+/*}*/
+
+/*.modal-oft-conclusion label {*/
+    /*font-size: 14px;*/
+/*}*/
+
+/*.modal-oft-conclusion .modal_container {*/
+    /*max-width: 95%;*/
+    /*max-height: calc(100vh - 1rem);*/
+    /*overflow: hidden;*/
+/*}*/
+
+/*.modal-oft-conclusion .modal_container .scroll-b {*/
+    /*max-height: 600px;*/
+    /*overflow-y: auto;*/
+    /*overflow-x: hidden;*/
+    /*padding-right: 17px;*/
+    /*margin: 15px 0;*/
+
+/*}*/
+
+/*.modal-oft-conclusion .status-b .form-control,*/
+/*.modal-oft-conclusion .status-b label {*/
+    /*font-size: 12px;*/
+/*}*/
+
+
+/*form 025*/
+
+
+
+
+
+
+
